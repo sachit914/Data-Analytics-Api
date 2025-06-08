@@ -15,5 +15,5 @@ class EventSchema(BaseModel):
 
 # returns list of eventSchema and count
 class EventListSchema(BaseModel):
-    results: list[EventSchema]
+    # results: list[EventSchema]
     count: int

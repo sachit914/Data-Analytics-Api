@@ -3,8 +3,8 @@ from typing import Optional
 from sqlmodel import SQLModel, Field
 
 
-class EventSchema(SQLModel):
-    id: int
+class EventModel(SQLModel,table=True):
+    id:Optional[int] = Field(default=None, primary_key=True)
     page:Optional[str] = ""
     description: Optional[str] = ""
 
@@ -18,5 +18,5 @@ class EventUpdateSchema(SQLModel):
 
 # returns list of eventSchema and count
 class EventListSchema(SQLModel):
-    results: list[EventSchema]
+    results: list[EventModel]
     count: int
