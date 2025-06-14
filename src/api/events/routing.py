@@ -10,7 +10,8 @@ from .models import(
      EventModel,
      EventListSchema,
      EvenetCreateSchema,
-     EventUpdateSchema
+     EventUpdateSchema,
+     get_utc_now
 )
 
 
@@ -66,6 +67,7 @@ def update_event(
     data = payload.model_dump()
     for key, value in data.items():
         setattr(obj, key, value)
+    obj.updated_at = get_utc_now()  # Update the updated_at field
     Session.add(obj)
     Session.commit()
     Session.refresh(obj)
